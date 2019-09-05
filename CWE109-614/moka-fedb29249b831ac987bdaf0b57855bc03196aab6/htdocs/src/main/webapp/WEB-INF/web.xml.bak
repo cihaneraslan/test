@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+	<display-name>sso-server</display-name>
+	<!-- for spring -->	
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:sso-root-applicationContext.xml</param-value>
+	</context-param>
+	
+	<filter>
+		<filter-name>keel-set-character-encoding</filter-name>
+		<filter-class>
+			com.hudong.keel.web.filter.SetCharacterEncodingFilter
+		</filter-class>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>keel-set-character-encoding</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<!-- for spring add by liaoxiandong -->
+	<listener>
+		<listener-class>
+			org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>
+	<!--
+	
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>
+			com.hudong.action.filter.EncodingFilter
+		</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	
+	
+	-->
+	<filter>
+    	<filter-name>keel-session</filter-name>
+    	<filter-class>
+    		com.hudong.keel.web.filter.HttpSessionFilter
+    	</filter-class>
+    </filter>
+    <filter>
+    	<filter-name>keel-product-context</filter-name>
+    	<filter-class>
+    		com.hudong.keel.web.filter.ProductContextFilter
+    	</filter-class>
+    </filter>
+    <filter>
+    	<filter-name>keel-cookie-autologon</filter-name>
+    	<filter-class>
+    		com.hudong.keel.web.filter.CookieAutoLogonFilter
+    	</filter-class>
+    	<init-param>
+      		<param-name>maxCurrentAutoLogon</param-name>
+        	<param-value>40</param-value>
+        </init-param>    	
+    </filter>
+    
+	 <filter-mapping>
+		<filter-name>keel-session</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>keel-session</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>keel-session</filter-name>
+		<url-pattern>*.htm</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>keel-session</filter-name>
+		<url-pattern>/Captcha.jpg</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>keel-session</filter-name>
+		<url-pattern>/captchacheck</url-pattern>
+	</filter-mapping>
+	
+	 <filter-mapping>
+		<filter-name>keel-product-context</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>keel-product-context</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>keel-product-context</filter-name>
+		<url-pattern>*.htm</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>keel-product-context</filter-name>
+		<url-pattern>/Captcha.jpg</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>keel-product-context</filter-name>
+		<url-pattern>/login</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>keel-product-context</filter-name>
+		<url-pattern>/captchacheck</url-pattern>
+	</filter-mapping>
+	
+	<filter-mapping>
+		<filter-name>keel-cookie-autologon</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>keel-cookie-autologon</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>keel-cookie-autologon</filter-name>
+		<url-pattern>*.htm</url-pattern>
+	</filter-mapping>
+	<!--for keel  filter end -->
+	
+	<!-- for servlet  Captcha begin-->
+	<servlet>
+		<servlet-name>Captcha</servlet-name>
+		<servlet-class>com.hudong.action.capcha.HDCapchaServlet</servlet-class>
+		<init-param>
+			<param-name>kaptcha.image.width</param-name>
+			<param-value>200</param-value>
+		</init-param>
+		<init-param>
+			<param-name>kaptcha.image.height</param-name>
+			<param-value>70</param-value>
+		</init-param>
+		<!--border around captcha. Legal values are yes or no. Defaults to yes Other values will be ignored-->
+		<init-param>
+			<param-name>kaptcha.textproducer.char.string</param-name>
+			<param-value>1234567890</param-value>
+		</init-param>
+		<!--if default captcha producer is slelected this value represents the amount of chars that are supplied in the captcha. values below 2 are not exepted when omitted defaults to 5-->
+		<init-param>
+			<param-name>kaptcha.textproducer.char.length</param-name>
+			<param-value>4</param-value>
+		</init-param>
+		<init-param>
+			<param-name>kaptcha.textproducer.font.names</param-name>
+			<param-value>Century Gothic,Arial,Helvetica,Courier,TimesRoman</param-value>
+		</init-param>
+		<init-param>
+			<param-name>kaptcha.textproducer.font.size</param-name>
+			<param-value>40</param-value>
+		</init-param>
+		<init-param>
+			<param-name>kaptcha.textproducer.font.color</param-name>
+			<param-value>20,20,180</param-value>
+		</init-param>
+		<init-param>
+			<param-name>kaptcha.background.impl</param-name>
+			<param-value>com.google.code.kaptcha.impl.DefaultBackground</param-value>
+		</init-param>
+		<!--values can be either red,yellow,blue,cya etc or r,g,b,alpha value-->
+		<init-param>
+			<param-name>kaptcha.background.clear.to</param-name>
+			<param-value>200,255,200</param-value>
+		</init-param>
+		<init-param>
+			<param-name>kaptcha.background.clear.from</param-name>
+			<param-value>255,255,255</param-value>
+		</init-param>
+		<init-param>
+			<param-name>kaptcha.noise.impl</param-name>
+			<param-value>com.google.code.kaptcha.impl.DefaultNoise</param-value>
+		</init-param>
+		<init-param>
+			<param-name>kaptcha.noise.color</param-name>
+			<param-value>20,20,180</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Captcha</servlet-name>
+		<url-pattern>/Captcha.jpg</url-pattern>
+	</servlet-mapping>
+	<!-- captcha check -->
+	<servlet>
+		<servlet-name>captchaCheck</servlet-name>
+		<servlet-class>com.hudong.action.capcha.HDCapchaCheckServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>captchaCheck</servlet-name>
+		<url-pattern>/captchacheck</url-pattern>
+	</servlet-mapping>
+	<!-- for servlet  Captcha end-->
+	
+	<!-- struts1 config add by liaoxiandong  -->
+	<servlet>
+		<servlet-name>action</servlet-name>
+		<servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+		<init-param>
+			<param-name>config</param-name>
+			<param-value>/WEB-INF/struts-config.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+    </servlet>
+	<!-- for struts 1 add by liaoxiandong -->
+	<servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+	<!-- struts tag add by liaoxiandong -->
+	<jsp-config> 
+	  <taglib>
+       <taglib-uri>/WEB-INF/struts-bean.tld</taglib-uri>
+       <taglib-location>/WEB-INF/tld/struts-bean.tld</taglib-location>
+	  </taglib>
+	  <taglib>
+	    <taglib-uri>/WEB-INF/struts-html.tld</taglib-uri>
+	    <taglib-location>/WEB-INF/tld/struts-html.tld</taglib-location>
+	  </taglib>
+	  <taglib>
+	    <taglib-uri>/WEB-INF/struts-logic.tld</taglib-uri>
+	    <taglib-location>/WEB-INF/tld/struts-logic.tld</taglib-location>
+	  </taglib>
+	</jsp-config> 
+
+	<welcome-file-list>
+  		<welcome-file>index.jsp</welcome-file>
+  	</welcome-file-list> 
+</web-app>

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="GBK"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.cgiser.moka</groupId>
+		<artifactId>cgiser-assembly-parent</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<groupId>com.cgiser.assembly</groupId>
+	<artifactId>moka</artifactId>
+	<version>1.0</version>
+	<name>cgiser moka Deployment War</name>
+	<url>https://www.moka.com/</url>
+	<packaging>pom</packaging>
+	<properties>
+		<assembly.name>moka</assembly.name>
+	</properties>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>create-config-structure</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>unpack</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>com.cgiser.moka</groupId>
+									<artifactId>cgiser-moka-app</artifactId>
+								</artifactItem>
+							</artifactItems>
+							<outputDirectory>
+								${project.build.directory}/config
+							</outputDirectory>
+						</configuration>
+					</execution>
+					<execution>
+						<id>create-web-structure</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>unpack</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>com.cgiser.moka</groupId>
+									<artifactId>cgiser-moka-htdocs</artifactId>
+									<type>war</type>
+								</artifactItem>
+							</artifactItems>
+							<outputDirectory>
+								${project.build.directory}/${assembly.name}.war
+							</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- 过滤文件 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+					<!-- 过滤处理日志文件 -->
+					<execution>
+						<id>log-filter</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<encoding>UTF-8</encoding>
+							<resources>
+								<resource>
+									<directory>${project.build.directory}/config/log/</directory>
+									<filtering>true</filtering>
+								</resource>
+							</resources>
+							<outputDirectory>
+								${project.build.directory}/${assembly.name}.war/WEB-INF/
+							</outputDirectory>
+							<overwrite>true</overwrite>
+						</configuration>
+					</execution>
+					<!-- 过滤处理应用配置文件 -->
+					<execution>
+						<id>conf-filter</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<encoding>UTF-8</encoding>
+							<resources>
+								<resource>
+									<directory>${project.build.directory}/config/conf/</directory>
+									<filtering>true</filtering>
+								</resource>
+							</resources>
+							<outputDirectory>
+								${project.build.directory}/${assembly.name}.war/WEB-INF/classes/
+							</outputDirectory>
+							<overwrite>true</overwrite>
+						</configuration>
+					</execution>
+					<!-- 过滤处理数据库配置-->
+					<!-- 过滤处理Apache配置-->
+				</executions>
+			</plugin>
+			<!-- 文件名称处理 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>rename-log4j</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<!-- log4j -->
+								<delete file="${project.build.directory}/${assembly.name}.war/WEB-INF/classes/log4j.xml"/>
+								<copy file="${project.build.directory}/${assembly.name}.war/WEB-INF/log4j.xml.vm" tofile="${project.build.directory}/${assembly.name}.war/WEB-INF/classes/log4j.xml"/>
+								<delete file="${project.build.directory}/${assembly.name}.war/WEB-INF/log4j.xml.vm"/>
+							</tasks>
+						</configuration>
+					</execution>
+					<execution>
+						<id>rename-app-config</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+							  <!-- app config -->
+								<delete file="${project.build.directory}/${assembly.name}.war/WEB-INF/classes/app.properties"/>
+								<mkdir dir="${project.build.directory}/${assembly.name}.war/WEB-INF/classes/META-INF"/>
+								<!--
+								<copy file="${project.build.directory}/${assembly.name}.war/WEB-INF/classes/app.properties.vm" tofile="${project.build.directory}/${assembly.name}.war/WEB-INF/classes/META-INF/app.properties"/>
+								-->
+								<copy file="${project.build.directory}/${assembly.name}.war/WEB-INF/classes/app.properties.vm" tofile="${project.build.directory}/${assembly.name}.war/WEB-INF/classes/app.properties"/>
+								
+								<delete file="${project.build.directory}/${assembly.name}.war/WEB-INF/classes/app.properties.vm"/>
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- 打包 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.1</version>
+				<configuration>
+					<descriptors>
+						<descriptor>src/main/assemble/war.xml</descriptor>
+					</descriptors>
+					<attach>false</attach>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- 文件包处理 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>rename-war</id>
+						<phase>package</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<delete file="${project.build.directory}/${project.artifactId}-${project.version}.war"/>
+								<copy file="${project.build.directory}/${project.artifactId}-${project.version}-war.zip" tofile="${project.build.directory}/${assembly.name}-${project.version}.war"/>
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

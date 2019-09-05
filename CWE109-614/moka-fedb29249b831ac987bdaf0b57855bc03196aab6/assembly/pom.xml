@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.cgiser.moka</groupId>
+	<artifactId>cgiser-assembly-parent</artifactId>
+	<name>cgiser moka Deploy Projects</name>
+	<version>1.0.0</version>
+	<parent>
+		<artifactId>cgiser-parent</artifactId>
+		<groupId>com.cgiser</groupId>
+		<version>1.0</version>
+	</parent>
+	<packaging>pom</packaging>
+	<dependencyManagement>
+		<dependencies/>
+	</dependencyManagement>
+	<modules>
+		<module>moka-war</module>
+	</modules>
+</project>

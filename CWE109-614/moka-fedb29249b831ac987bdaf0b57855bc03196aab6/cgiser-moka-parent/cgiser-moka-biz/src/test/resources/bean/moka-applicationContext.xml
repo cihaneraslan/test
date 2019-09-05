@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd"
+	default-autowire="byName">
+	<description>
+		This is the main Spring configuration file with some of the main "core"
+		classes defined. You shouldn't really modify this unless you
+		know what you're doing!
+    </description>
+    <context:property-placeholder location="classpath:META-INF/app.properties" />
+    <import resource="classpath:/bean/keel-web-common-bean.xml" />
+	
+	<bean id="dataSourceMock"
+		class="com.cgiser.moka.dao.DataSourceMock"  init-method="init">
+		<property name="mokaDataSource">
+			<ref bean="mokaDataSource4Test"/>
+		</property>
+	</bean><!--
+	<bean id="messageManager" class="com.cgiser.moka.message.netty.MessageManagerImpl" />
+	<bean id="serverNettyImpl" class="com.cgiser.moka.message.netty.ServerNettyImpl" />
+	<bean id="pipelineFactory" class="com.cgiser.moka.message.netty.ServerChannelPipelineFactory" />
+	<bean id="receiverHandler" class="com.cgiser.moka.message.netty.ReceiverHandler" />
+	<bean id="roleCachedManager"
+		class="com.cgiser.core.common.cache.mem.xmemcached.XMemcachedClientFactoryBean">
+		<property name="servers" value="192.168.2.18:11212" />
+		<property name="weights"
+			value="1000" />
+	</bean>
+	--><bean id="mokaDataSource4Test" class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+			p:driverClassName="${moka.jdbc.driverClassName}" p:url="${moka.jdbc.url}"
+			p:username="${moka.jdbc.username}" p:password="${moka.jdbc.password}" />
+			
+	<bean id="battleCachedManager"
+		class="com.cgiser.core.common.cache.mem.xmemcached.XMemcachedClientFactoryBean">
+		<property name="servers" value="192.168.2.18:11212" />
+		<property name="weights"
+			value="1000" />
+	</bean>
+	<bean id="roleCachedManager"
+		class="com.cgiser.core.common.cache.mem.memcached.MemcachedClientFactoryBean">
+		<property name="servers" value="192.168.2.18:11212" />
+	</bean>
+	<!-- 神庙 --><!--
+	<bean id="faneCachedManager"
+		class="com.cgiser.core.common.cache.mem.xmemcached.XMemcachedClientFactoryBean">
+		<property name="servers" value="192.168.2.18:11213" />
+		<property name="weights"
+			value="1000" />
+	</bean>
+	<bean id="groupCachedManager"
+		class="com.cgiser.core.common.cache.mem.xmemcached.XMemcachedClientFactoryBean">
+		<property name="servers" value="192.168.2.18:11214" />
+		<property name="weights"
+			value="1000" />
+	</bean>
+	 入侵赛变量保存 
+	<bean id="robCachedManager"
+		class="com.cgiser.core.common.cache.mem.xmemcached.XMemcachedClientFactoryBean">
+		<property name="servers" value="192.168.2.18:11215" />
+		<property name="weights"
+			value="1000" />
+	</bean>
+--><bean id="roleManager" class="com.cgiser.moka.manager.impl.RoleManagerImpl" />
+	<bean id="friendsManager" class="com.cgiser.moka.manager.impl.FriendsManagerImpl" />
+	<bean id="legionManager" class="com.cgiser.moka.manager.impl.LegionManagerImpl" />
+	<bean id="cardManager" class="com.cgiser.moka.manager.impl.CardManagerImpl" />
+	<bean id="goodManager" class="com.cgiser.moka.manager.impl.GoodManagerImpl" />
+	<bean id="skillManager" class="com.cgiser.moka.manager.impl.SkillManagerImpl" />
+	<bean id="userCardManager" class="com.cgiser.moka.manager.impl.UserCardManagerImpl" />
+	<bean id="userCardGroupManager" class="com.cgiser.moka.manager.impl.UserCardGroupManagerImpl" />
+	<bean id="languageManager" class="com.cgiser.moka.manager.impl.LanguageManagerImpl" />
+	<!--<bean id="messageManager" class="com.cgiser.moka.manager.impl.MessageManagerImpl" />
+	--><bean id="runeManager" class="com.cgiser.moka.manager.impl.RuneManagerImpl" />
+	<bean id="userRuneManager" class="com.cgiser.moka.manager.impl.UserRuneManagerImpl" />
+	<bean id="mapManager" class="com.cgiser.moka.manager.impl.MapManagerImpl" />
+	<bean id="stageManager" class="com.cgiser.moka.manager.impl.StageManagerImpl" />
+	<bean id="heroLevelManager" class="com.cgiser.moka.manager.impl.HeroLevelManagerImpl" />
+	<bean id="stageLevelManager" class="com.cgiser.moka.manager.impl.StageLevelManagerImpl" />
+	<bean id="userStageManager" class="com.cgiser.moka.manager.impl.UserStageManagerImpl" />
+	<!-- for message -->
+	<bean id="messageManager" class="com.cgiser.moka.message.netty.MessageManagerImpl" />
+	<!--<bean id="serverNettyImpl" init-method="start" class="com.cgiser.moka.message.netty.ServerNettyImpl" />-->
+	<bean id="pipelineFactory" class="com.cgiser.moka.message.netty.ServerChannelPipelineFactory" />
+	<bean id="receiverHandler" class="com.cgiser.moka.message.netty.ReceiverHandler" />
+	<bean id="fightManager" class="com.cgiser.moka.manager.impl.FightManagerImpl" />
+	<bean id="locationManager" class="com.cgiser.moka.manager.impl.LocationManagerImpl" />
+	<bean id="emailManager" class="com.cgiser.moka.manager.impl.EmailManagerImpl" />
+	<bean id="fragmentManager" class="com.cgiser.moka.manager.impl.FragmentManagerImpl" />
+	<bean id="thirdManager" class="com.cgiser.moka.manager.impl.ThirdManagerImpl" />
+	<bean id="legionFightManager" class="com.cgiser.moka.manager.impl.LegionFightManagerImpl" />
+	<bean id="salaryManager" class="com.cgiser.moka.manager.impl.SalaryManagerImpl" />
+	<bean id="loginAwardManager" class="com.cgiser.moka.manager.impl.LoginAwardManagerImpl" />
+	<bean id="matchGameManager" class="com.cgiser.moka.manager.impl.MatchGameManagerImpl" />
+	<bean id="fighterManager" class="com.cgiser.moka.manager.impl.FighterManagerImpl" />
+	<bean id="soulManager" class="com.cgiser.moka.manager.impl.SoulManagerImpl" />
+	<bean id="userSoulManager" class="com.cgiser.moka.manager.impl.UserSoulManagerImpl" />
+	<bean id="chipManager" class="com.cgiser.moka.manager.impl.ChipManagerImpl" />
+	<bean id="productManager" class="com.cgiser.moka.manager.impl.ProductManagerImpl" />
+	<bean id="httpAccessClient" class="com.cgiser.moka.manager.support.HttpAccessClient" init-method="init">
+	 	<property name="maxThreadsTotal" value="128" />
+		<property name="maxThreadsPerHost" value="32" />
+		<property name="connectionTimeout" value="15000" />
+		<property name="soTimeout" value="14000" />
+	 </bean>
+	 <bean id="helpManager" class="com.cgiser.moka.manager.impl.HelpManagerImpl" />
+	 <bean id="achievementManager" class="com.cgiser.moka.manager.impl.AchievementManagerImpl" />
+	 <bean id="robRoleCacheManager" class="com.cgiser.moka.manager.impl.RobRoleCacheManagerImpl" />
+	 <bean id="robLogManager" class="com.cgiser.moka.manager.impl.RobLogManagerImpl" />
+	 <bean id="freeFightManager" class="com.cgiser.moka.manager.impl.FreeFightManagerImpl" />
+	<bean id="activitiesManager" class="com.cgiser.moka.manager.impl.ActivitiesManagerImpl" />
+	<bean id="pushManagerImpl" class="javapns.notification.PushNotificationManager" />
+	<!--<bean id="pushNotificationManager"
+		class="com.cgiser.moka.manager.impl.PushNotificationManagerImpl">
+		<property name="certificatePath" value="${certificatePath}" />
+		<property name="certificatePassword" value="${certificatePassword}" />
+		<property name="production" value="${production}" />
+		<property name="pushManager">
+			<ref bean="pushManagerImpl" />
+		</property>
+	</bean>
+	--><bean init-method="scan" class="com.cgiser.moka.message.netty.ScanRoleStatus" />
+	<bean id="cardFragmentManager" class="com.cgiser.moka.manager.impl.CardFragmentManagerImpl" />
+	<bean id="userCardFragmentManager"
+		class="com.cgiser.moka.manager.impl.UserCardFragmentManagerImpl" />
+	<bean id="vipInfoManager" class="com.cgiser.moka.manager.impl.VipInfoManagerImpl" />
+	<bean id="wdjProductLogManager" class="com.cgiser.moka.manager.impl.WDJProductLogManagerImpl" />
+	<bean id="tencentSdk" class="com.cgiser.moka.tencent.sdk.TencentSdk" />
+	<bean id="roomManager" class="com.cgiser.moka.manager.impl.RoomManagerImpl" />
+	<bean id="groupFightManager" class="com.cgiser.moka.manager.impl.GroupFightManagerImpl" />
+	<bean id="baiDuProductLogManager" class="com.cgiser.moka.manager.impl.BaiDuProductLogManagerImpl" />
+	<import resource="classpath:/bean/moka-dao-bean.xml" />
+	<import resource="classpath:/bean/moka-dao-env-bean.xml" />
+	<bean id="giftManager" class="com.cgiser.moka.manager.impl.GiftManagerImpl" />
+</beans>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="GBK"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:osgi="http://www.springframework.org/schema/osgi"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd"
+	default-autowire="byName">
+	<!--
+		========================================================================
+	-->
+	<!--
+		DAO定义。
+	-->
+	<!--
+		========================================================================
+	-->
+	<bean id="roleDao" class="com.cgiser.moka.dao.RoleDao" />
+	<bean id="friendsDao" class="com.cgiser.moka.dao.FriendsDao" />
+	<bean id="legionDao" class="com.cgiser.moka.dao.LegionDao" />
+	<bean id="cardDao" class="com.cgiser.moka.dao.CardDao" />
+	<bean id="goodDao" class="com.cgiser.moka.dao.GoodDao" />
+	<bean id="skillDao" class="com.cgiser.moka.dao.SkillDao" />
+	<bean id="userCardDao" class="com.cgiser.moka.dao.UserCardDao" />
+	<bean id="userCardGroupDao" class="com.cgiser.moka.dao.UserCardGroupDao" />
+	<bean id="languageDao" class="com.cgiser.moka.dao.LanguageDao" />
+	<bean id="runeDao" class="com.cgiser.moka.dao.RuneDao" />
+	<bean id="userRuneDao" class="com.cgiser.moka.dao.UserRuneDao" />
+	<bean id="mapDao" class="com.cgiser.moka.dao.MapDao" />
+	<bean id="stageDao" class="com.cgiser.moka.dao.StageDao" />
+	<bean id="heroLevelDao" class="com.cgiser.moka.dao.HeroLevelDao" />
+	<bean id="stageLevelDao" class="com.cgiser.moka.dao.StageLevelDao" />
+	<bean id="userStageDao" class="com.cgiser.moka.dao.UserStageDao" />
+	<bean id="locationDao" class="com.cgiser.moka.dao.LocationDao" />
+	<bean id="mailDao" class="com.cgiser.moka.dao.MailDao" />
+	<bean id="fragmentDao" class="com.cgiser.moka.dao.FragmentDao" />
+	<bean id="thirdDao" class="com.cgiser.moka.dao.ThirdDao" />
+	<bean id="legionFightDao" class="com.cgiser.moka.dao.LegionFightDao" />
+	<bean id="salaryDao" class="com.cgiser.moka.dao.SalaryDao" />
+	<bean id="loginAwardDao" class="com.cgiser.moka.dao.LoginAwardDao" />
+	<bean id="soulDao" class="com.cgiser.moka.dao.SoulDao" />
+	<bean id="userSoulDao" class="com.cgiser.moka.dao.UserSoulDao" />
+	<bean id="chipDao" class="com.cgiser.moka.dao.ChipDao" />
+	<bean id="productDao" class="com.cgiser.moka.dao.ProductDao" />
+	<bean id="helpDao" class="com.cgiser.moka.dao.HelpDao" />
+	<bean id="achievementDao" class="com.cgiser.moka.dao.AchievementDao" />
+	<bean id="robLogDao" class="com.cgiser.moka.dao.RobLogDao" />
+	<bean id="activitiesDao" class="com.cgiser.moka.dao.ActivitiesDao" />
+	<bean id="tokenDao" class="com.cgiser.moka.dao.TokenDao" />
+	<bean id="versionDao" class="com.cgiser.moka.dao.VersionDao" />
+	<bean id="cardFragmentDao" class="com.cgiser.moka.dao.CardFragmentDao" />
+	<bean id="userCardFragmentDao" class="com.cgiser.moka.dao.UserCardFragmentDao" />
+	<bean id="vipRoleDao" class="com.cgiser.moka.dao.VipRoleDao" />
+	<bean id="fightDao" class="com.cgiser.moka.dao.FightDao" />
+	<bean id="wdjProductLogDao" class="com.cgiser.moka.dao.WDJProductLogDao" />
+	<bean id="roomDao" class="com.cgiser.moka.dao.RoomDao" />
+	<bean id="groupFightDao" class="com.cgiser.moka.dao.GroupFightDao" />
+	<bean id="matchRoleDao" class="com.cgiser.moka.dao.MatchRoleDao" />
+	<bean id="baiDuProductLogDao" class="com.cgiser.moka.dao.BaiDuProductLogDao" />
+	<bean id="giftDao" class="com.cgiser.moka.dao.GiftDao"/>
+</beans>

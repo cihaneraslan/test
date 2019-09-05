@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	<data-sources />
+	<!-- Form beans .test -->
+	<!--
+		<form-beans> <form-bean name="autoLoginActionForm"
+		type="com.hudong.sso.action.mobile.model.AutoLoginActionForm" />
+		<form-bean name="loginActionForm"
+		type="com.hudong.sso.action.mobile.model.LoginActionForm" />
+		<form-bean name="logoutActionForm"
+		type="com.hudong.sso.action.mobile.model.LogoutActionForm" />
+		<form-bean name="registerAndLoginActionForm"
+		type="com.hudong.sso.action.mobile.model.RegisterAndLoginActionForm"
+		/> <form-bean name="connectLoginActionForm"
+		type="com.hudong.sso.action.mobile.model.ConnectLoginActionForm" />
+		<form-bean name="connectRegisterAndLoginActionForm"
+		type="com.hudong.sso.action.mobile.model.ConnectRegisterAndLoginActionForm"
+		/> <form-bean name="connectBindActionForm"
+		type="com.hudong.sso.action.mobile.model.ConnectBindActionForm" />
+		<form-bean name="capchaActionForm"
+		type="com.hudong.sso.action.mobile.model.CapchaActionForm" />
+		<form-bean name="getPasswordActionForm"
+		type="com.hudong.sso.action.mobile.model.GetPasswordActionForm" />
+		</form-beans>
+	--><!-- Global forward -->
+
+	<!-- -->
+	<action-mappings>
+		<!-- 登陆 -->
+		<action path="/getrole" validate="false" parameter="method"
+			type="com.cgiser.moka.action.RoleAction" scope="request">
+		</action>
+		<action path="/getLoginRole" validate="false" parameter="method"
+			type="com.cgiser.moka.action.GetLoginRoleAction" scope="request">
+		</action>
+		<action path="/getWebLoginRole" validate="false" parameter="method"
+			type="com.cgiser.moka.action.GetWebLoginRoleAction" scope="request">
+			<forward name="role" path="/user.jsp" />
+		</action>
+		<action path="/login" validate="false" parameter="method"
+			type="com.cgiser.moka.action.LoginAction" scope="request">
+		</action>
+		<action path="/createrole" validate="false" parameter="method"
+			type="com.cgiser.moka.action.RegisterRoleAction" scope="request">
+		</action>
+		<action path="/invitfriend" validate="false" parameter="method"
+			type="com.cgiser.moka.action.InvitFriendAction" scope="request">
+		</action>
+		<action path="/friendlist" validate="false" parameter="method"
+			type="com.cgiser.moka.action.GetFriendListAction" scope="request">
+		</action>
+		<action path="/findrole" validate="false" parameter="method"
+			type="com.cgiser.moka.action.FindRoleAction" scope="request">
+		</action>
+		<action path="/friendinvitlist" validate="false" parameter="method"
+			type="com.cgiser.moka.action.GetFriendInviteAction" scope="request">
+		</action>
+		<action path="/applyfriendinvit" validate="false" parameter="method"
+			type="com.cgiser.moka.action.ApplyFriendInvitAction" scope="request">
+		</action>
+		<action path="/delfriendinvit" validate="false" parameter="method"
+			type="com.cgiser.moka.action.DelFriendInvitAction" scope="request">
+		</action>
+		<action path="/delfriend" validate="false" parameter="method"
+			type="com.cgiser.moka.action.DelFriendAction" scope="request">
+		</action>
+		<!-- 军团接口 -->
+		<action path="/getLegions" validate="false" parameter="method"
+			type="com.cgiser.moka.legion.action.GetLegionsAction" scope="request">
+		</action>
+		<action path="/outLegion" validate="false" parameter="method"
+			type="com.cgiser.moka.legion.action.OutLegionAction" scope="request">
+		</action>
+		<action path="/resignDuty" validate="false" parameter="method"
+			type="com.cgiser.moka.legion.action.ResignDutyAction" scope="request">
+		</action>
+		<action path="/getMember" validate="false" parameter="method"
+			type="com.cgiser.moka.legion.action.GetLegionerAction" scope="request">
+		</action>
+		<action path="/createLegion" validate="false" parameter="method"
+			type="com.cgiser.moka.legion.action.CreateLegionAction" scope="request">
+		</action>
+		<action path="/applyLegion" validate="false" parameter="method"
+			type="com.cgiser.moka.legion.action.LegionApplyAction" scope="request">
+		</action>
+		<action path="/getLegionApply" validate="false" parameter="method"
+			type="com.cgiser.moka.legion.action.GetLegionApplyAction" scope="request">
+		</action>
+		<action path="/updateLegionSlogan" validate="false" parameter="method"
+			type="com.cgiser.moka.legion.action.UpdateLegionSloganAction" scope="request">
+		</action>
+		<action path="/agreeLegionApply" validate="false" parameter="method"
+			type="com.cgiser.moka.legion.action.AgreeLegionApplyAction" scope="request">
+		</action>
+		<action path="/getOutLegion" validate="false" parameter="method"
+			type="com.cgiser.moka.legion.action.GetOutLegionAction" scope="request">
+		</action>
+		<action path="/attornLegion" validate="false" parameter="method"
+			type="com.cgiser.moka.legion.action.AttornLegionAction" scope="request">
+		</action>
+		<action path="/updateEmblem" validate="false" parameter="method"
+			type="com.cgiser.moka.legion.action.UpdateEmblemAction" scope="request">
+		</action>
+		<action path="/upEmblem" validate="false" parameter="method"
+			type="com.cgiser.moka.legion.action.UpgradeEmblemAction" scope="request">
+		</action>
+		<action path="/upDuty" validate="false" parameter="method"
+			type="com.cgiser.moka.legion.action.UpDutyAction" scope="request">
+		</action>
+		<action path="/setGuard" validate="false" parameter="method"
+			type="com.cgiser.moka.legion.action.SetGuardAction" scope="request">
+		</action>
+		<action path="/getLegionGuard" validate="false" parameter="method"
+			type="com.cgiser.moka.legion.action.GetLegionGuardAction" scope="request">
+		</action>
+		<!-- card -->
+		<action path="/getAllCard" validate="false" parameter="method"
+			type="com.cgiser.moka.card.action.GetAllCardAction" scope="request">
+		</action>
+		<action path="/getCardBySkill" validate="false" parameter="method"
+			type="com.cgiser.moka.card.action.GetCardBySkillAction" scope="request">
+		</action>
+		<action path="/getUserCards" validate="false" parameter="method"
+			type="com.cgiser.moka.card.action.GetUserCardAction" scope="request">
+		</action>
+		<action path="/getUserCardIds" validate="false" parameter="method"
+			type="com.cgiser.moka.card.action.GetUserCardIdsAction" scope="request">
+		</action>
+		<action path="/getCardGroup" validate="false" parameter="method"
+			type="com.cgiser.moka.card.action.GetUserCardGroupAction" scope="request">
+		</action>
+		<action path="/saveCardGroup" validate="false" parameter="method"
+			type="com.cgiser.moka.card.action.SaveUserCardGroupAction" scope="request">
+		</action>
+		<action path="/updateUserCardGroupName" validate="false" parameter="method"
+			type="com.cgiser.moka.card.action.UpdateUserCardGroupNameAction" scope="request">
+		</action>
+		<action path="/addCardGroup" validate="false" parameter="method"
+			type="com.cgiser.moka.card.action.AddCardGroupAction" scope="request">
+		</action>
+		<action path="/updateUserCardSoul" validate="false" parameter="method"
+			type="com.cgiser.moka.card.action.UpdateUserCardSoul" scope="request">
+		</action>
+		<!-- 商城接口 -->
+		<action path="/getGoods" validate="false" parameter="method"
+			type="com.cgiser.moka.goods.action.GetGoodAction" scope="request">
+		</action>
+		<action path="/buyGoods" validate="false" parameter="method"
+			type="com.cgiser.moka.goods.action.BuyGoodAction" scope="request">
+		</action>
+		<!-- 技能接口 -->
+		<action path="/GetAllSkill" validate="false" parameter="method"
+			type="com.cgiser.moka.skill.action.GetAllSkillAction" scope="request">
+		</action>
+		<!-- 语言接口 -->
+		<action path="/getLan" validate="false" parameter="method"
+			type="com.cgiser.moka.lan.action.GetLanAction" scope="request">
+		</action>
+		<!-- 卡牌强化接口 -->
+		<action path="/streng" validate="false" parameter="method"
+			type="com.cgiser.moka.card.action.StrengCardAction" scope="request">
+		</action>
+		<action path="/strengpre" validate="false" parameter="method"
+			type="com.cgiser.moka.card.action.StrengCardPreViewAction" scope="request">
+		</action>
+		<action path="/sellCard" validate="false" parameter="method"
+			type="com.cgiser.moka.card.action.SellCardAction" scope="request">
+		</action>
+		<!-- 符文接口 -->
+		<action path="/getAllRune" validate="false" parameter="method"
+			type="com.cgiser.moka.rune.action.GetAllRuneAction" scope="request">
+		</action>
+		<action path="/strengRune" validate="false" parameter="method"
+			type="com.cgiser.moka.rune.action.StrengRuneAction" scope="request">
+		</action>
+		<action path="/strengRunePre" validate="false" parameter="method"
+			type="com.cgiser.moka.rune.action.StrengRunePreViewAction" scope="request">
+		</action>
+		<action path="/getUserRune" validate="false" parameter="method"
+			type="com.cgiser.moka.rune.action.GetUserRuneAction" scope="request">
+		</action>
+		<action path="/getUserRuneIds" validate="false" parameter="method"
+			type="com.cgiser.moka.rune.action.GetUserRuneIdsAction" scope="request">
+		</action>
+		<!-- 战斗接口 -->
+		<action path="/freeFight" validate="false" parameter="method"
+			type="com.cgiser.moka.fight.action.FreeFightAction" scope="request">
+		</action>
+		<action path="/newFreeFight" validate="false" parameter="method"
+			type="com.cgiser.moka.fight.action.NewFreeFightAction" scope="request">
+		</action>
+		<action path="/newFreeBattle" validate="false" parameter="method"
+			type="com.cgiser.moka.fight.action.NewFreeBattleAction" scope="request">
+		</action>
+		<action path="/fight" validate="false" parameter="method"
+			type="com.cgiser.moka.fight.action.FightAction" scope="request">
+		</action>
+		<action path="/battle" validate="false" parameter="method"
+			type="com.cgiser.moka.fight.action.BattleAction" scope="request">
+		</action>
+		<action path="/getFightPart" validate="false" parameter="method"
+			type="com.cgiser.moka.fight.action.GetFightPartAction" scope="request">
+		</action>
+		<action path="/freeBattle" validate="false" parameter="method"
+			type="com.cgiser.moka.fight.action.FreeBattleAction" scope="request">
+		</action>
+		<action path="/getRoleStatus" validate="false" parameter="method"
+			type="com.cgiser.moka.fight.action.GetRoleStatusAction" scope="request">
+		</action>
+		<action path="/getAllMap" validate="false" parameter="method"
+			type="com.cgiser.moka.map.action.GetAllMapAction" scope="request">
+		</action>
+		<action path="/getUserStage" validate="false" parameter="method"
+			type="com.cgiser.moka.fight.action.GetUserStageAction" scope="request">
+		</action>
+		<action path="/getNearRole" validate="false" parameter="method"
+			type="com.cgiser.moka.action.GetLocationAction" scope="request">
+		</action>
+		<action path="/saveRoleLocation" validate="false" parameter="method"
+			type="com.cgiser.moka.action.SaveLocationAction" scope="request">
+		</action>
+		<action path="/getMail" validate="false" parameter="method"
+			type="com.cgiser.moka.mail.action.GetMailAction" scope="request">
+		</action>
+		<action path="/sendMail" validate="false" parameter="method"
+			type="com.cgiser.moka.mail.action.SendMailAction" scope="request">
+		</action>
+		<action path="/readMail" validate="false" parameter="method"
+			type="com.cgiser.moka.mail.action.ReadMailAction" scope="request">
+		</action>
+		<action path="/delMail" validate="false" parameter="method"
+			type="com.cgiser.moka.mail.action.DelMailAction" scope="request">
+		</action>
+		<action path="/updateRoleStatus" validate="false" parameter="method"
+			type="com.cgiser.moka.action.UpdateRoleStatusAction" scope="request">
+		</action>
+		<!-- 神庙接口 -->
+		<action path="/doNpc" validate="false" parameter="method"
+			type="com.cgiser.moka.fane.action.DoNpcAction" scope="request">
+		</action>
+		<action path="/getNpcInfo" validate="false" parameter="method"
+			type="com.cgiser.moka.fane.action.GetNpcInfoAction" scope="request">
+		</action>
+		<action path="/deal" validate="false" parameter="method"
+			type="com.cgiser.moka.fane.action.DealAction" scope="request">
+		</action>
+		<action path="/exChangeList" validate="false" parameter="method"
+			type="com.cgiser.moka.fane.action.ExChangeListAction" scope="request">
+		</action>
+		<action path="/exChange" validate="false" parameter="method"
+			type="com.cgiser.moka.fane.action.ExChangeAction" scope="request">
+		</action>
+		<!-- 彩票接口 -->
+		<action path="/saveThirdD" validate="false" parameter="method"
+			type="com.cgiser.moka.ticket.action.AddRecordAction" scope="request">
+		</action>
+		<action path="/getThirdDDate" validate="false" parameter="method"
+			type="com.cgiser.moka.ticket.action.GetThirdDDateAction" scope="request">
+		</action>
+		<action path="/getThirdDRecords" validate="false" parameter="method"
+			type="com.cgiser.moka.ticket.action.GetThirdRecordsAction" scope="request">
+		</action>
+		<!-- 获取排名战接口 -->
+		<action path="/getRankCompetitors" validate="false" parameter="method"
+			type="com.cgiser.moka.fight.rank.action.GetRankCompetitorsAction" scope="request">
+		</action>
+		<action path="/rankFight" validate="false" parameter="method"
+			type="com.cgiser.moka.fight.rank.action.RankFightAction" scope="request">
+		</action>
+		<action path="/getRank" validate="false" parameter="method"
+			type="com.cgiser.moka.fight.rank.action.GetRankAction" scope="request">
+		</action>
+		<!-- 帮派战接口 -->
+		<action path="/startLegionFight" validate="false" parameter="method"
+			type="com.cgiser.moka.fight.legion.action.StartLegionFightAction" scope="request">
+		</action>
+		<action path="/getLegionFight" validate="false" parameter="method"
+			type="com.cgiser.moka.fight.legion.action.GetLegionFightAction" scope="request">
+		</action>
+		<!-- 奖励接口 -->
+		<action path="/getSalary" validate="false" parameter="method"
+			type="com.cgiser.moka.salary.action.GetSalaryAction" scope="request">
+		</action>
+		<action path="/extendSalary" validate="false" parameter="method"
+			type="com.cgiser.moka.salary.action.ExtendSalaryAction" scope="request">
+		</action>
+		<action path="/receiveSalary" validate="false" parameter="method"
+			type="com.cgiser.moka.salary.action.ReceiveSalaryAction" scope="request">
+		</action>
+		<action path="/getLoginAwardType" validate="false" parameter="method"
+			type="com.cgiser.moka.award.action.GetLoginAwardTypeAction" scope="request">
+		</action>
+		<!-- 匹配赛接口 -->
+		<action path="/getMatchGameSet" validate="false" parameter="method"
+			type="com.cgiser.moka.fight.match.action.GetMatchGameSetAction" scope="request">
+		</action>
+		<action path="/findMatchPlayer" validate="false" parameter="method"
+			type="com.cgiser.moka.fight.match.action.FindMatchPlayerAction" scope="request">
+		</action>
+		<action path="/createRoom" validate="false" parameter="method"
+			type="com.cgiser.moka.fight.match.action.CreateRoomAction" scope="request">
+		</action>
+		<action path="/outRoom" validate="false" parameter="method"
+			type="com.cgiser.moka.fight.match.action.OutRoomAction" scope="request">
+		</action>
+		<!-- 战魂武魂接口 -->
+		<action path="/getAllSoul" validate="false" parameter="method"
+			type="com.cgiser.moka.soul.action.GetAllSoulAction" scope="request">
+		</action>
+		<action path="/getUserSoul" validate="false" parameter="method"
+			type="com.cgiser.moka.soul.action.GetUserSoulAction" scope="request">
+		</action>
+		<action path="/getRandomSoul" validate="false" parameter="method"
+			type="com.cgiser.moka.soul.action.GetRandomSoulAction" scope="request">
+		</action>
+		<action path="/exChangeSoul" validate="false" parameter="method"
+			type="com.cgiser.moka.soul.action.ExChangeSoulAction" scope="request">
+		</action>
+		<action path="/refreshSoul" validate="false" parameter="method"
+			type="com.cgiser.moka.soul.action.RefreshRandomSoulAction" scope="request">
+		</action>
+		<action path="/sellSoul" validate="false" parameter="method"
+			type="com.cgiser.moka.soul.action.SellSoulAction" scope="request">
+		</action>
+		<!-- 头像接口 -->
+		<action path="/getAvatarCardIds" validate="false" parameter="method"
+			type="com.cgiser.moka.avtar.action.GetAvatarCardIdsAction" scope="request">
+		</action>
+		<action path="/editAvatar" validate="false" parameter="method"
+			type="com.cgiser.moka.avtar.action.EditAvatarAction" scope="request">
+		</action>
+		<!-- 神龙碎片接口 -->
+		<action path="/GetUserChip" validate="false" parameter="method"
+			type="com.cgiser.moka.goods.action.GetUserChipAction" scope="request">
+		</action>
+		<action path="/exchangeUserChip" validate="false" parameter="method"
+			type="com.cgiser.moka.goods.action.ExchangeChipAction" scope="request">
+		</action>
+		<!-- 充值接口 -->
+		<action path="/getProduct" validate="false" parameter="method"
+			type="com.cgiser.moka.apple.goods.action.GetProductAction" scope="request">
+		</action>
+		<action path="/getProductLog" validate="false" parameter="method"
+			type="com.cgiser.moka.apple.goods.action.GetProductLogAction" scope="request">
+		</action>
+		<action path="/paymentVerify" validate="false" parameter="method"
+			type="com.cgiser.moka.apple.goods.action.PaymentVerifyAction" scope="request">
+		</action>
+		<action path="/finishTransaction" validate="false" parameter="method"
+			type="com.cgiser.moka.apple.goods.action.FinishTransationAction" scope="request">
+		</action>
+		<!-- 帮助接口 -->
+		<action path="/getHelp" validate="false" parameter="method"
+			type="com.cgiser.moka.help.action.GetHelpAction" scope="request">
+		</action>
+		<!-- 成就接口 -->
+		<action path="/getAchievement" validate="false" parameter="method"
+			type="com.cgiser.moka.achievement.action.GetAchievementAction" scope="request">
+		</action>
+		<action path="/finishAchievement" validate="false" parameter="method"
+			type="com.cgiser.moka.achievement.action.FinishAchievementAction" scope="request">
+		</action>
+		<!-- 探索接口 -->
+		<action path="/explore" validate="false" parameter="method"
+			type="com.cgiser.moka.map.action.ExploreAction" scope="request">
+		</action>
+		<!-- 卡组接口 -->
+		<action path="/updateUserCardGroup" validate="false" parameter="method"
+			type="com.cgiser.moka.card.action.UpdateUserCardGroupAction" scope="request">
+		</action>
+		<!-- 入侵玩家接口 -->
+		<action path="/getRandomRole" validate="false" parameter="method"
+			type="com.cgiser.moka.fight.action.GetRodamRoleAction" scope="request">
+		</action>
+		<action path="/refreshRandomRole" validate="false" parameter="method"
+			type="com.cgiser.moka.fight.action.RefreshRodamRoleAction" scope="request">
+		</action>
+		<!-- 地图收益接口 -->
+		<action path="/collectMapCoins" validate="false" parameter="method"
+			type="com.cgiser.moka.map.action.CollectMapInComeAction" scope="request">
+		</action>
+		<action path="/getMapInComeInfo" validate="false" parameter="method"
+			type="com.cgiser.moka.map.action.GetMapLastInComeAction" scope="request">
+		</action>
+		<!-- 购买各种战斗的次数和CD -->
+		<action path="/buyEnergy" validate="false" parameter="method"
+			type="com.cgiser.moka.buy.action.BuyEnergyAction" scope="request">
+		</action>
+		<action path="/buyMatchTimes" validate="false" parameter="method"
+			type="com.cgiser.moka.buy.action.BuyMatchTimesAction" scope="request">
+		</action>
+		<action path="/buyRankCd" validate="false" parameter="method"
+			type="com.cgiser.moka.buy.action.BuyRankCdAction" scope="request">
+		</action>
+		<action path="/buyRankTimes" validate="false" parameter="method"
+			type="com.cgiser.moka.buy.action.BuyRankTimesAction" scope="request">
+		</action>
+		<action path="/buyRobTimes" validate="false" parameter="method"
+			type="com.cgiser.moka.buy.action.BuyRobTimesAction" scope="request">
+		</action>
+		<!--给关卡配置武器接口 -->
+		<action path="/installSoul" validate="false" parameter="method"
+			type="com.cgiser.moka.map.action.InstallSoulAction" scope="request">
+		</action>
+		<!--获取剧情接口 -->
+		<action path="/getStory" validate="false" parameter="method"
+			type="com.cgiser.moka.map.action.GetStoryAction" scope="request">
+		</action>
+		<!--给关卡配置奖励接口 -->
+		<action path="/addStageReward" validate="false" parameter="method"
+			type="com.cgiser.moka.map.action.AddStageRewardAction" scope="request">
+		</action>
+		<!--删除关卡奖励接口 -->
+		<action path="/deleteStageReward" validate="false" parameter="method"
+			type="com.cgiser.moka.map.action.DeleteStageRewardAction" scope="request">
+		</action>
+		<!--获取排名第一的玩家接口 -->
+		<action path="/getFirstRank" validate="false" parameter="method"
+			type="com.cgiser.moka.fight.rank.action.GetFirstRankAction" scope="request">
+		</action>
+		<!--保存用户引导接口 -->
+		<action path="/saveFreshStep" validate="false" parameter="method"
+			type="com.cgiser.moka.action.SaveFreshStepAction" scope="request">
+		</action>
+		<!--获取所有的活动接口 -->
+		<action path="/getActivities" validate="false" parameter="method"
+			type="com.cgiser.moka.activities.action.GetActivitiesAction" scope="request">
+		</action>
+		<!-- 修改玩家tokenId接口 -->
+		<action path="/updateRoleTokenId" validate="false" parameter="method"
+			type="com.cgiser.moka.apple.push.UpdateRoleTokenIdAction" scope="request">
+		</action>
+		<!-- 每日领取体力接口 -->
+		<action path="/reciveEnergy" validate="false" parameter="method"
+			type="com.cgiser.moka.action.ReciveEnergyAction" scope="request">
+		</action>
+		<!-- 重置程序版本接口 -->
+		<action path="/resetVersion" validate="false" parameter="method"
+			type="com.cgiser.moka.version.action.ResetVersionAction" scope="request">
+		</action>
+		<!-- 91支付验证接口 -->
+		<action path="/paymentVerifyForNineOne" validate="false" parameter="method"
+			type="com.cgiser.moka.nineone.goods.action.PaymentVerifyAction" scope="request">
+		</action>
+		<action path="/getcooOrderSerial" validate="false" parameter="method"
+			type="com.cgiser.moka.nineone.goods.action.GetcooOrderSerialAction" scope="request">
+		</action>
+		<action path="/getVipInfo" validate="false" parameter="method"
+			type="com.cgiser.moka.vip.action.GetVipInfoAction" scope="request">
+		</action>
+		<!-- 匹配战接口 -->
+		<action path="/startMatchGame" validate="false" parameter="method"
+			type="com.cgiser.moka.fight.match.action.StartMatchGameAction" scope="request">
+		</action>
+		<action path="/stopMatchGame" validate="false" parameter="method"
+			type="com.cgiser.moka.fight.match.action.StopMatchGameAction" scope="request">
+		</action>
+		<action path="/getMatchGameStatus" validate="false" parameter="method"
+			type="com.cgiser.moka.fight.match.action.GetMatchGameStatusAction" scope="request">
+		</action>
+		<!-- 碎片系统接口 -->
+		<action path="/getCardFragment" validate="false" parameter="method"
+			type="com.cgiser.moka.card.fragment.action.GetCardFragmentAction" scope="request">
+		</action>
+		<action path="/getRoleCardFragment" validate="false" parameter="method"
+			type="com.cgiser.moka.card.fragment.action.GetRoleFragmentAction" scope="request">
+		</action>
+		<action path="/exchangeCard" validate="false" parameter="method"
+			type="com.cgiser.moka.card.fragment.action.ExchangeCardAction" scope="request">
+		</action>
+		<action path="/resolveCard" validate="false" parameter="method"
+			type="com.cgiser.moka.card.fragment.action.ResolveCardAction" scope="request">
+		</action>
+		<!--VIP管理接口-->
+		<action path="/getRoleVipInfo" validate="false" parameter="method"
+			type="com.cgiser.moka.vip.action.GetRoleVipInfoAction" scope="request">
+		</action>
+		<!--豌豆荚支付回调接口-->
+		<action path="/paymentVerifyForWdj" validate="false" parameter="method"
+			type="com.cgiser.moka.wdj.goods.action.PaymentVerifyAction" scope="request">
+		</action>
+		<action path="/getwdjCooOrderSerial" validate="false" parameter="method"
+			type="com.cgiser.moka.wdj.goods.action.GetcooOrderSerialAction" scope="request">
+		</action>
+		<!--QQ支付获取订单-->
+		<action path="/getqqCooOrderSerial" validate="false" parameter="method"
+			type="com.cgiser.moka.qq.goods.action.GetcooOrderSerialAction" scope="request">
+		</action>
+		<!--组队战接口-->
+		<action path="/createMapRoom" validate="false" parameter="method"
+			type="com.cgiser.moka.fight.group.action.CreateRoomAction" scope="request">
+		</action>
+		<action path="/getMapRoom" validate="false" parameter="method"
+			type="com.cgiser.moka.fight.group.action.GetRoomsAction" scope="request">
+		</action>
+		<action path="/getMapRoomByRoomId" validate="false" parameter="method"
+			type="com.cgiser.moka.fight.group.action.GetMapRoomAction" scope="request">
+		</action>
+		<action path="/joinMapRoom" validate="false" parameter="method"
+			type="com.cgiser.moka.fight.group.action.JoinRoomAction" scope="request">
+		</action>
+		<action path="/outMapRoom" validate="false" parameter="method"
+			type="com.cgiser.moka.fight.group.action.OutRoomAction" scope="request">
+		</action>
+		<action path="/GetRoomInfo" validate="false" parameter="method"
+			type="com.cgiser.moka.map.action.GetRoomInfoAction" scope="request">
+		</action>
+		<action path="/joinHall" validate="false" parameter="method"
+			type="com.cgiser.moka.fight.group.action.JoinHallAction" scope="request">
+		</action>
+		<action path="/outHall" validate="false" parameter="method"
+			type="com.cgiser.moka.fight.group.action.OutHallAction" scope="request">
+		</action>
+		<action path="/getGroupFight" validate="false" parameter="method"
+			type="com.cgiser.moka.fight.group.action.GetGroupFightAction" scope="request">
+		</action>
+		<action path="/startGroupFight" validate="false" parameter="method"
+			type="com.cgiser.moka.fight.group.action.StartFightAction" scope="request">
+		</action>
+	</action-mappings>
+	<!-- Message Resources -->
+	<message-resources parameter="application" />
+</struts-config>

@@ -1,0 +1,98 @@
+<head><style>
+	  h3 { display: inline; }
+	 
+	</style>
+	<link rel="stylesheet" type="text/css" href="style_menu.css"> 
+	</head>
+	
+<div id="filter1">
+<form action="Filter1_submit" method="POST">
+
+<h1><center>Personal Information</center></h1>
+<br><br>
+
+<p><h3>Email-ID</h3>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="text" name="femail" id="femail">
+<p><h3>Name</h3>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="text" name="fname" id="fname"></p>
+<p>	<h3>Enrollment No</h3>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="text" name="fenroll_no" id="fenroll_no"></p><span id="tfenroll_no"></span>
+		
+		<p><h3>Category&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3>
+<select id="fcategory" name="fcategory">
+  <option value="All">All</option>
+  <option value="General">General</option>
+  <option value="OBC">OBC</option>
+  <option value="ST">ST</option>
+  <option value="SC">SC</option>
+
+  </select>
+  <p><h3>Physically Disabled</h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <input type="radio" name="fpd"  id="fpd" value="Yes">Yes<input type="radio" name="fpd" id="fpd" value="No">No</p>
+
+		<p><h3>Gender</h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="radio" name="fgender" id="fgender" value="Male">Male<input type="radio" id="fgender" name="fgender" value="Female">Female</p>
+
+		
+		<p><h3>Date Of Birth</h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="radio" name="fdob" id="fdob" value="Before">Before<input type="radio" id="fdob" name="fdob" value="On">On<input type="radio" id="fdob" name="fdob" value="After">After </p><span id="tfdob"></span>
+		<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="date" name="fdate" id="fdate" max="2015-12-02"></p><span id="tfdate"></span>
+
+		<br>
+
+
+<button type="button" onclick="func()">Proceed</button>
+<input type="submit" name="Submit" id="Submit" style="display:none;">
+
+
+		</center>
+	</div>
+	
+	<script>
+	function func()
+	{
+	var txt;var check;var flag=0;
+	field="fenroll_no";
+	txt=document.getElementById("fenroll_no").value;
+	if(!(txt.length==0) && (isNaN(txt) || txt < 1 || txt != parseInt(txt, 10))){
+		document.getElementById("tfenroll_no").innerHTML = "Invalid" ;flag=1;
+		}
+	else
+		document.getElementById("tfenroll_no").innerHTML = "" ;
+	field="fdob";
+	txt = document.getElementsByName(field);
+	check = -1;
+	for(var i=0; i < txt.length; i++){
+		if(txt[i].checked) {
+			check = i; 
+		}
+	}
+	if(check==-1 && document.getElementById('fdate').length==0)
+		var flag2=0;
+	if(check!=-1)
+		{
+					field="fdate";
+				txt = document.getElementById(field).value;
+				if (!txt) {
+					document.getElementById("t"+field).innerHTML = "Invalid" ;flag=1;}
+				else
+					document.getElementById("t"+field).innerHTML = "" ;
+		}
+		else
+		{
+				field="fdate";
+				txt = document.getElementById(field).value;
+				if (txt) {
+					document.getElementById("t"+field).innerHTML = "Invalid" ;flag=1;}
+				else
+					document.getElementById("t"+field).innerHTML = "" ;
+		}
+		if(flag==0 || flag2==0)
+		document.getElementById("Submit").click();
+		
+	}
+	</script>

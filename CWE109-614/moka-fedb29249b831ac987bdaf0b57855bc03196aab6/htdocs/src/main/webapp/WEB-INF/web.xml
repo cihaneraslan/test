@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+	<display-name>sso-server</display-name>
+	<!-- for spring -->	
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:moka-root-applicationContext.xml,classpath:/bean/moka-biz-impl-quartz-bean.xml</param-value>
+	</context-param>
+	
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>
+			com.cgiser.keel.action.filter.EncodingFilter
+		</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<!-- for spring add by liaoxiandong -->
+	<listener>
+		<listener-class>
+			org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>
+	<filter>
+    	<filter-name>keel-session</filter-name>
+    	<filter-class>
+    		com.cgiser.keel.action.filter.HttpSessionFilter
+    	</filter-class>
+    </filter>
+    <filter>
+    	<filter-name>keel-product-context</filter-name>
+    	<filter-class>
+    		com.cgiser.keel.action.filter.ProductContextFilter
+    	</filter-class>
+    </filter>
+	<filter-mapping>
+		<filter-name>keel-session</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>keel-session</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>keel-session</filter-name>
+		<url-pattern>*.htm</url-pattern>
+	</filter-mapping>
+
+	
+	 <filter-mapping>
+		<filter-name>keel-product-context</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>keel-product-context</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>keel-product-context</filter-name>
+		<url-pattern>*.htm</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>keel-product-context</filter-name>
+		<url-pattern>/login</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>keel-product-context</filter-name>
+		<url-pattern>/weblogin</url-pattern>
+	</filter-mapping>
+	
+	<!-- struts1 config add by liaoxiandong  -->
+	<servlet>
+		<servlet-name>action</servlet-name>
+		<servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+		<init-param>
+			<param-name>config</param-name>
+			<param-value>/WEB-INF/struts-config.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+    </servlet>
+	<!-- for struts 1 add by liaoxiandong -->
+	<servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+	<!-- struts tag add by liaoxiandong -->
+	<jsp-config> 
+	  <taglib>
+       <taglib-uri>/WEB-INF/struts-bean.tld</taglib-uri>
+       <taglib-location>/WEB-INF/tld/struts-bean.tld</taglib-location>
+	  </taglib>
+	  <taglib>
+	    <taglib-uri>/WEB-INF/struts-html.tld</taglib-uri>
+	    <taglib-location>/WEB-INF/tld/struts-html.tld</taglib-location>
+	  </taglib>
+	  <taglib>
+	    <taglib-uri>/WEB-INF/struts-logic.tld</taglib-uri>
+	    <taglib-location>/WEB-INF/tld/struts-logic.tld</taglib-location>
+	  </taglib>
+	</jsp-config> 
+
+	<welcome-file-list>
+  		<welcome-file>index.jsp</welcome-file>
+  	</welcome-file-list> 
+</web-app>

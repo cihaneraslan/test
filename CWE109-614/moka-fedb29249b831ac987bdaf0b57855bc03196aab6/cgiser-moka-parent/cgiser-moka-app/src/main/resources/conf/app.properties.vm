@@ -1,0 +1,32 @@
+loggingRoot=${loggingRoot}
+
+# ------- 应用程序的动态配置属性，将用在Spring中 --------
+moka_loggingLevel=${moka_loggingLevel}
+
+battleCacheServer = ${battleCacheServer}
+roleCacheServer = ${roleCacheServer}
+faneCacheServer = ${faneCacheServer}
+groupCacheServer = ${groupCacheServer}
+robCacheServer = ${robCacheServer}
+rankCacheServer = ${rankCacheServer}
+energyCacheServer = ${energyCacheServer}
+freeCacheServer = ${freeCacheServer}
+payCacheServer = ${payCacheServer}
+
+sso.service.url = ${sso.service.url}
+
+appid = ${appid}
+appkey = ${appkey}
+
+certificatePath = ${certificatePath}
+certificatePassword = ${certificatePassword}
+production = ${production}
+
+payUrl = ${payUrl}
+
+sessionCacheServer = ${sessionCacheServer}
+
+session.timeout= ${session.timeout}
+
+request.error.page = ${request.error.page}
+

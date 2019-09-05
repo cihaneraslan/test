@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<!-- @version $Id$ -->
+<!--
+  - Log4j配置文件。
+-->
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<!-- ===================================================================== -->
+	<!-- Appenders                                                             -->
+	<!-- ===================================================================== -->
+	<!-- ===== [公共Appender] ===== -->
+	<!-- [公共Appender] 默认 -->
+	<appender name="DEFAULT-APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="${loggingRoot}/common-default.log"/>
+		<param name="append" value="true"/>
+		<param name="encoding" value="GBK"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p %c{2} - %m%n"/>
+		</layout>
+	</appender>
+	<!-- [公共Appender] 汇总错误 -->
+	<appender name="ERROR-APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="${loggingRoot}/common-error.log"/>
+		<param name="append" value="true"/>
+		<param name="encoding" value="GBK"/>
+		<param name="threshold" value="error"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p %c{2} - %m%n"/>
+		</layout>
+	</appender>
+	<!-- [公共Appender] 汇总性能统计 -->
+	<appender name="PERF-APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="${loggingRoot}/common-perf.log"/>
+		<param name="append" value="true"/>
+		<param name="encoding" value="GBK"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p %c{2} - %m%n"/>
+		</layout>
+	</appender>
+	<!-- [公共Appender] 控制台STDOUT -->
+	<appender name="STDOUT-APPENDER" class="org.apache.log4j.ConsoleAppender">
+		<param name="encoding" value="GBK"/>
+		<param name="target" value="System.out"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p %c{2} - %m%n"/>
+		</layout>
+	</appender>
+	<!-- [公共Appender] 控制台STDERR -->
+	<appender name="STDERR-APPENDER" class="org.apache.log4j.ConsoleAppender">
+		<param name="encoding" value="GBK"/>
+		<param name="target" value="System.err"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p %c{2} - %m%n"/>
+		</layout>
+	</appender>
+	<!-- [公共Appender] 空 -->
+	<appender name="NULL-APPENDER" class="org.apache.log4j.varia.NullAppender"/>
+	<!-- [公共Appender] Jakarta commons -->
+	<appender name="APACHE-APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="${loggingRoot}/common-apache.log"/>
+		<param name="append" value="true"/>
+		<param name="encoding" value="GBK"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p %c{2} - %m%n"/>
+		</layout>
+	</appender>
+	<!-- [公共Appender] 数据访问层 -->
+	<appender name="DAO-APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="${loggingRoot}/common-dao.log"/>
+		<param name="append" value="true"/>
+		<param name="encoding" value="GBK"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p %c{2} - %m%n"/>
+		</layout>
+	</appender>
+	
+	<!-- [MOK-Appender] 强化卡牌业务日志 -->
+	<appender name="BIZ_USERCARDSTRENG" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="${loggingRoot}/UserCardStreng.log"/>
+		<param name="append" value="true"/>
+		<param name="encoding" value="GBK"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p %c{2} - %m%n"/>
+		</layout>
+	</appender>
+		<!-- [MOK-Appender] 战斗减血业务日志 -->
+	<appender name="BIZ_FIGHT" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="${loggingRoot}/fight.log"/>
+		<param name="append" value="true"/>
+		<param name="encoding" value="GBK"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p %c{2} - %m%n"/>
+		</layout>
+	</appender>
+	<!-- [MOK-Appender]消息处理业务日志 -->
+	<appender name="BIZ_MESSAGE" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="${loggingRoot}/common-message.log"/>
+		<param name="append" value="true"/>
+		<param name="encoding" value="GBK"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p %c{2} - %m%n"/>
+		</layout>
+	</appender>
+	
+
+
+	
+	<!-- ===================================================================== -->
+	<!-- Loggers                                                               -->
+	<!-- ===================================================================== -->
+	<!-- ===== [公共Logger] ===== -->
+	<!-- [公共Logger] 性能 - URL性能  -->
+	<logger name="com.hudong.keel.web.filter.PerformanceMonitorFilter" additivity="false">
+		<level value="INFO"/>
+		<appender-ref ref="PERF-APPENDER"/>
+	</logger>
+	<!-- [公共Logger] 控制台STDOUT - STDOUT -->
+	<logger name="STDOUT" additivity="false">
+		<level value="INFO"/>
+		<appender-ref ref="STDOUT-APPENDER"/>
+	</logger>
+	<!-- [公共Logger] 控制台STDERR - STDERR -->
+	<logger name="STDERR" additivity="false">
+		<level value="${moka_loggingLevel}"/>
+		<appender-ref ref="STDERR-APPENDER"/>
+	</logger>
+	<!-- ===== [框架Logger] ===== -->
+	<!-- [框架Logger] Jakarta commons - 默认 -->
+	<logger name="org.apache" additivity="false">
+		<level value="${moka_loggingLevel}"/>
+		<appender-ref ref="APACHE-APPENDER"/>
+		<appender-ref ref="ERROR-APPENDER"/>
+	</logger>
+	<!-- [框架Logger] Jakarta commons - beanutils -->
+	<logger name="org.apache.commons.beanutils">
+		<level value="ERROR"/>
+		<appender-ref ref="APACHE-APPENDER"/>
+		<appender-ref ref="ERROR-APPENDER"/>
+	</logger>
+	<!-- [框架Logger] 数据访问层 - mokaDao -->
+	<logger name="com.cgiser.moka.dao" additivity="false">
+		<level value="${moka_loggingLevel}"/>
+		<appender-ref ref="DAO-APPENDER"/>
+		<appender-ref ref="ERROR-APPENDER"/>
+	</logger>
+	<!-- [框架Logger] 数据访问层 - SQL -->
+	<logger name="java.sql" additivity="false">
+		<level value="${moka_loggingLevel}"/>
+		<appender-ref ref="DAO-APPENDER"/>
+		<appender-ref ref="ERROR-APPENDER"/>
+	</logger>
+	<!-- ===== [应用Logger] ===== -->
+	<!-- [应用Logger] 卡牌强化- moka -->
+	<logger name="usercard.streng" additivity="false">
+		<level value="${moka_loggingLevel}"/>
+		<appender-ref ref="BIZ_USERCARDSTRENG"/>
+		<appender-ref ref="ERROR-APPENDER"/>
+	</logger>
+		<!-- [应用Logger] 战斗- moka -->
+	<logger name="skill" additivity="false">
+		<level value="${moka_loggingLevel}"/>
+		<appender-ref ref="BIZ_FIGHT"/>
+		<appender-ref ref="ERROR-APPENDER"/>
+	</logger>
+	<!-- [应用Logger] Memcache -->
+	<logger name="com.danga">
+		<level value="WARN"/>
+		<appender-ref ref="DEFAULT-APPENDER"/>
+		<appender-ref ref="ERROR-APPENDER"/>
+	</logger>
+		<!-- [应用Logger] 聊天日志- moka -->
+	<logger name="com.cgiser.moka.message.netty" additivity="false">
+		<level value="${moka_loggingLevel}"/>
+		<appender-ref ref="BIZ_MESSAGE"/>
+		<appender-ref ref="ERROR-APPENDER"/>
+	</logger>
+	<!-- ===================================================================== -->
+	<!-- Root logger                                                           -->
+	<!-- ===================================================================== -->
+	<root>
+		<level value="${moka_loggingLevel}"/>
+		<appender-ref ref="DEFAULT-APPENDER"/>
+		<appender-ref ref="ERROR-APPENDER"/>
+	</root>
+</log4j:configuration>

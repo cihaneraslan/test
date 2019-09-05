@@ -1,0 +1,15 @@
+<servlet>
+  <servlet-name>home</servlet-name>
+  <servlet-class>home</servlet-class>
+  <async-supported>true</async-supported>
+</servlet>
+ <servlet>
+  <servlet-name>oauthcallback</servlet-name>
+  <servlet-class>oauthcallback</servlet-class>
+  <async-supported>true</async-supported>
+</servlet>
+ <servlet>
+  <servlet-name>Login_user</servlet-name>
+  <servlet-class>Login_user</servlet-class>
+  <async-supported>true</async-supported>
+</servlet>

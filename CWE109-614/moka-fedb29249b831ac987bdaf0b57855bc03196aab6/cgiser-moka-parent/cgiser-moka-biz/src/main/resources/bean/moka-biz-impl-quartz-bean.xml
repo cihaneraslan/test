@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd"
+	default-autowire="byName">
+    <bean id="methodInvokingJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+       <property name="targetObject">
+           <ref bean="pushNotificationManager" />
+       </property>
+       <property name="targetMethod">
+           <value>pushMatchGameMessageToAll</value>
+       </property>
+       <property name="concurrent" value="false" />
+    </bean>
+    <!-- 配置触发器 -->
+    <bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <!-- 这里不可以直接在属性jobDetail中引用taskJob，因为他要求的是一个jobDetail类型的对象，所以我们得通过MethodInvokingJobDetailFactoryBean来转一下 -->
+       <property name="jobDetail">
+           <ref bean="methodInvokingJobDetail" />
+       </property>
+       <!-- 每天的12点、20点触发，具体说明见附录 -->
+       <property name="cronExpression">
+           <value>0 0 12,20 * * ?</value>
+       </property>
+
+    </bean>
+    <bean id="methodInvokingJobDetail1" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+       <property name="targetObject">
+           <ref bean="pushNotificationManager" />
+       </property>
+       <property name="targetMethod">
+           <value>pushEnertyMessageToAll</value>
+       </property>
+       <property name="concurrent" value="false" />
+    </bean>
+    <!-- 配置触发器 -->
+    <bean id="cronTrigger1" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <!-- 这里不可以直接在属性jobDetail中引用taskJob，因为他要求的是一个jobDetail类型的对象，所以我们得通过MethodInvokingJobDetailFactoryBean来转一下 -->
+       <property name="jobDetail">
+           <ref bean="methodInvokingJobDetail1" />
+       </property>
+       <!-- 每天的12点、18点触发，具体说明见附录 -->
+       <property name="cronExpression">
+           <value>0 0 12,18 * * ?</value>
+       </property>
+
+    </bean>
+    <bean id="methodInvokingJobDetail2" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+       <property name="targetObject">
+           <ref bean="pushNotificationManager" />
+       </property>
+       <property name="targetMethod">
+           <value>pushEnergyToAll</value>
+       </property>
+       <property name="concurrent" value="false" />
+    </bean>
+    <!-- 配置触发器 -->
+    <bean id="cronTrigger2" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <!-- 这里不可以直接在属性jobDetail中引用taskJob，因为他要求的是一个jobDetail类型的对象，所以我们得通过MethodInvokingJobDetailFactoryBean来转一下 -->
+       <property name="jobDetail">
+           <ref bean="methodInvokingJobDetail2" />
+       </property>
+       <!-- 每隔10分钟触发，具体说明见附录 -->
+       <property name="cronExpression">
+           <value>0 */10 * * * ?</value>
+       </property>
+
+    </bean>
+    <bean id="methodInvokingJobDetail3" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+       <property name="targetObject">
+           <ref bean="thirdManager" />
+       </property>
+       <property name="targetMethod">
+           <value>runLottery</value>
+       </property>
+       <property name="concurrent" value="false" />
+    </bean>
+    <!-- 配置彩票更换期数触发器 -->
+    <bean id="cronTrigger3" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <!-- 这里不可以直接在属性jobDetail中引用taskJob，因为他要求的是一个jobDetail类型的对象，所以我们得通过MethodInvokingJobDetailFactoryBean来转一下 -->
+       <property name="jobDetail">
+           <ref bean="methodInvokingJobDetail3" />
+       </property>
+       <!-- 每天的0点触发，具体说明见附录 -->
+       <property name="cronExpression">
+           <value>0 0 0 * * ?</value>
+       </property>
+    </bean>
+    <bean id="methodInvokingJobDetail4" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+       <property name="targetObject">
+           <ref bean="thirdManager" />
+       </property>
+       <property name="targetMethod">
+           <value>reciveSalary</value>
+       </property>
+       <property name="concurrent" value="false" />
+    </bean>
+    <!-- 配置彩票发奖触发器 -->
+    <bean id="cronTrigger4" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <!-- 这里不可以直接在属性jobDetail中引用taskJob，因为他要求的是一个jobDetail类型的对象，所以我们得通过MethodInvokingJobDetailFactoryBean来转一下 -->
+       <property name="jobDetail">
+           <ref bean="methodInvokingJobDetail4" />
+       </property>
+       <!-- 每天的8点触发，具体说明见附录 -->
+       <property name="cronExpression">
+           <value>0 0 8 * * ?</value>
+       </property>
+
+    </bean>
+     <!-- 配置排名战发放触发器 -->
+    <bean id="methodInvokingJobDetail5" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+       <property name="targetObject">
+           <ref bean="salaryManager" />
+       </property>
+       <property name="targetMethod">
+           <value>extendRankSalary</value>
+       </property>
+       <property name="concurrent" value="false" />
+    </bean>
+    <!-- 配置排名战发放触发器 -->
+    <bean id="cronTrigger5" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <!-- 这里不可以直接在属性jobDetail中引用taskJob，因为他要求的是一个jobDetail类型的对象，所以我们得通过MethodInvokingJobDetailFactoryBean来转一下 -->
+       <property name="jobDetail">
+           <ref bean="methodInvokingJobDetail5" />
+       </property>
+       <!-- 每天的0点触发，具体说明见附录 -->
+       <property name="cronExpression">
+           <value>0 0 0 * * ?</value>
+       </property>
+
+    </bean>
+    <bean id="methodInvokingJobDetail6" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+       <property name="targetObject">
+           <ref bean="freeFightManager" />
+       </property>
+       <property name="targetMethod">
+           <value>start</value>
+       </property>
+        <property name="concurrent" value="false" />
+    </bean>
+    <!-- 配置触发器 -->
+    <bean id="cronTrigger6" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <!-- 这里不可以直接在属性jobDetail中引用taskJob，因为他要求的是一个jobDetail类型的对象，所以我们得通过MethodInvokingJobDetailFactoryBean来转一下 -->
+       <property name="jobDetail">
+           <ref bean="methodInvokingJobDetail6" />
+       </property>
+       <!-- 每隔10分钟触发，具体说明见附录 -->
+       <property name="cronExpression">
+           <value>0/5 * * * * ?</value>
+       </property>
+
+    </bean>
+     <bean id="methodInvokingJobDetail7" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+       <property name="targetObject">
+           <ref bean="freeFightManager" />
+       </property>
+       <property name="targetMethod">
+           <value>matchPlayer</value>
+       </property>
+        <property name="concurrent" value="false" />
+    </bean>
+    <!-- 配置触发器 -->
+    <bean id="cronTrigger7" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <!-- 这里不可以直接在属性jobDetail中引用taskJob，因为他要求的是一个jobDetail类型的对象，所以我们得通过MethodInvokingJobDetailFactoryBean来转一下 -->
+       <property name="jobDetail">
+           <ref bean="methodInvokingJobDetail7" />
+       </property>
+       <!-- 每隔10分钟触发，具体说明见附录 -->
+       <property name="cronExpression">
+           <value>0/10 * * * * ?</value>
+       </property>
+    </bean>
+    <bean id="methodInvokingJobDetail8" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+       <property name="targetObject">
+           <ref bean="matchGameManager" />
+       </property>
+       <property name="targetMethod">
+           <value>stopMatchGame</value>
+       </property>
+        <property name="concurrent" value="false" />
+    </bean>
+    <!-- 配置停止匹配战触发器 -->
+    <bean id="cronTrigger8" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <!-- 这里不可以直接在属性jobDetail中引用taskJob，因为他要求的是一个jobDetail类型的对象，所以我们得通过MethodInvokingJobDetailFactoryBean来转一下 -->
+       <property name="jobDetail">
+           <ref bean="methodInvokingJobDetail8" />
+       </property>
+       <!-- 每隔10分钟触发，具体说明见附录 -->
+       <property name="cronExpression">
+           <value>0 0 14,22 * * ?</value>
+       </property>
+    </bean>
+    <bean id="methodInvokingJobDetail9" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+       <property name="targetObject">
+           <ref bean="roomManager" />
+       </property>
+       <property name="targetMethod">
+           <value>scanAllRoom</value>
+       </property>
+        <property name="concurrent" value="false" />
+    </bean>
+    <!-- 配置组队战触发器 -->
+    <bean id="cronTrigger9" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <!-- 这里不可以直接在属性jobDetail中引用taskJob，因为他要求的是一个jobDetail类型的对象，所以我们得通过MethodInvokingJobDetailFactoryBean来转一下 -->
+       <property name="jobDetail">
+           <ref bean="methodInvokingJobDetail9" />
+       </property>
+       <!-- 每隔10分钟触发，具体说明见附录 -->
+       <property name="cronExpression">
+           <value>0/10 * * * * ?</value>
+       </property>
+    </bean>
+    <bean id="methodInvokingJobDetail10" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+       <property name="targetObject">
+           <ref bean="matchGameManager" />
+       </property>
+       <property name="targetMethod">
+           <value>addAllRoleMatchCD</value>
+       </property>
+        <property name="concurrent" value="false" />
+    </bean>
+    <!-- 配置匹配战体力发放触发器 -->
+    <bean id="cronTrigger10" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <!-- 这里不可以直接在属性jobDetail中引用taskJob，因为他要求的是一个jobDetail类型的对象，所以我们得通过MethodInvokingJobDetailFactoryBean来转一下 -->
+       <property name="jobDetail">
+           <ref bean="methodInvokingJobDetail10" />
+       </property>
+       <!-- 每隔10分钟触发，具体说明见附录 -->
+       <property name="cronExpression">
+           <value>0 */30 * * * ?</value>
+       </property>
+    </bean>
+    <bean id="methodInvokingJobDetail11" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+       <property name="targetObject">
+           <ref bean="legionFightManager" />
+       </property>
+       <property name="targetMethod">
+           <value>scanAllLegionFight</value>
+       </property>
+        <property name="concurrent" value="false" />
+    </bean>
+    <!-- 配置匹配战体力发放触发器 -->
+    <bean id="cronTrigger11" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <!-- 这里不可以直接在属性jobDetail中引用taskJob，因为他要求的是一个jobDetail类型的对象，所以我们得通过MethodInvokingJobDetailFactoryBean来转一下 -->
+       <property name="jobDetail">
+           <ref bean="methodInvokingJobDetail11" />
+       </property>
+       <!-- 每隔10分钟触发，具体说明见附录 -->
+       <property name="cronExpression">
+           <value>0 */1 * * * ?</value>
+       </property>
+    </bean>
+    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+       <!-- 添加触发器 -->
+       <property name="triggers">
+           <list>
+              <ref local="cronTrigger" />
+              <ref local="cronTrigger1" />
+              <ref local="cronTrigger2" />
+              <ref local="cronTrigger3" />
+              <ref local="cronTrigger4" />
+              <ref local="cronTrigger5" />
+              <ref local="cronTrigger6" />
+              <ref local="cronTrigger7" />
+              <ref local="cronTrigger8" />
+              <ref local="cronTrigger9" />
+              <ref local="cronTrigger10" />
+              <ref local="cronTrigger11" />
+           </list>
+       </property>
+    </bean>
+</beans>

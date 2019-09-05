@@ -1,0 +1,85 @@
+*{margin:0;padding:0}table{border-collapse:collapse;border-spacing:0}em{font-style:normal}
+ol,ul{list-style:none}fieldset,img,abbr,acronym{border:0}input,select{font-family:Microsoft YaHei}h1,h2,h3,h4,h5,h6{font-size:100%}q:before,q:after{content:''}
+body{font:normal 12px/1.6em Microsoft YaHei,Tahoma,simsun;}.clearfix{*zoom:1}.clearfix:after{content:'\20';display:block;height:0;line-height:0;visibility:hidden;clear:both}a{text-decoration:none}a:hover{text-decoration:underline}
+.hid{display:none}
+.tnd{overflow:hidden;text-indent:-9999em}
+.fl{float:left;display:inline}
+.fr{float:right;display:inline}
+input.checkbox{vertical-align:middle}
+.w100{width: 100%}
+.cred{color:#E3583C}
+.cgray{color:#999}
+.cgreen{color:#00A483}
+.lnk-red{color:#E3583C;border-bottom:1px dotted #E3583C}
+.lnk-normal{color:#666;border-bottom:1px dotted #666}
+.lnk-red:hover,.lnk-normal:hover{text-decoration:none;border-bottom-style:solid}
+.checkbox,.radio{margin-right:3px}
+.colbox{border:1px solid #E1E1E1;box-shadow:0 0 2px rgba(0,0,0,.1);background:#fff}
+.borline{border-bottom:1px dotted #BFBFBF}
+.borlineX{border-bottom:1px solid #eee}
+.layout{width:980px;margin:0 auto}
+.toper{height:474px;position:relative;z-index: 2;background: url(http://ossweb-img.qq.com/images/lol/web201310/bg/main-top-v3.jpg) no-repeat center top;}
+.mainer{position: relative;z-index: 1}
+.publicspr,.toplink{background-repeat:no-repeat;background-image:url(http://ossweb-img.qq.com/images/lol/web201310/public/public-v2.png);}
+.topmenuspr,.topmenu .current .topmenu-lnk,.topmenu .current .topnav-list{background-repeat:no-repeat;background-image:url(http://ossweb-img.qq.com/images/lol/web201310/public/menuhover.png);}
+.toplogo,.toplogo a{position:absolute;left:50%;top:12px;z-index:2;margin-left:-104px;width:208px;height:172px}
+.topslogan{position:absolute;top:316px;right:2px;width:252px;height:30px;}
+.topslogan-lnk{display:block;float:right;width:104px;height:30px}
+.topmenu{height:72px;}
+.topmenu li{float:left;width:96px;position:relative}
+.topmenu-lnk{display:block;height:46px;width:96px;padding-top:26px;cursor: pointer;}
+.topmenu-lnk i{display:block;margin:0 auto;width:65px;height:34px;overflow:hidden;text-indent:-999em}
+.topmenu-lnk .m-home{background-position:0 0}
+.topmenu-lnk .m-info{background-position:-66px 0}
+.topmenu-lnk .m-store{background-position:-132px 0}
+.topmenu-lnk .m-user{background-position:-198px 0}
+.topmenu-lnk .m-event{background-position:-264px 0}
+.topmenu-lnk .m-sys{background-position:-330px 0}
+.topmenu-lnk .m-help{background-position:-396px 0}
+.topmenu-lnk .m-awards{background-position:-462px 0}
+.topmenu-lnk:hover .m-home,.current .m-home{background-position:0 -40px}
+.topmenu-lnk:hover .m-info,.current .m-info{background-position:-66px -40px}
+.topmenu-lnk:hover .m-store,.current .m-store{background-position:-132px -40px}
+.topmenu-lnk:hover .m-user,.current .m-user{background-position:-198px -40px}
+.topmenu-lnk:hover .m-event,.current .m-event{background-position:-264px -40px}
+.topmenu-lnk:hover .m-sys,.current .m-sys{background-position:-330px -40px}
+.topmenu-lnk:hover .m-help,.current .m-help{background-position:-396px -40px}
+.topmenu-lnk:hover .m-awards,.current .m-awards{background-position:-462px -40px}
+.topnav-list{position:absolute;top:70px;left:0;width:96px;height:190px;padding-top:10px;overflow:hidden;zoom:1;text-align:center}
+.topnav-lnk{display:block;width:96px;height:22px;color:#A1A6A9;line-height:22px;position:relative}
+.topnav-lnk:hover{color:#00A483;text-decoration:none}
+.topnav-lnk .ico-h,.topnav-lnk .ico-n{position:absolute;top:3px;left:6px;display:block;margin-right:3px;width:16px;height:16px;vertical-align:middle}
+.topnav-lnk .ico-n{background-position:-1411px 0}
+.topnav-lnk .ico-h{background-position:-1411px -17px}
+.topmenu .current .topmenu-lnk{background-position:-443px -84px;_background: none;}
+.topmenu .current .topmenu-1,.topmenu .current .topmenu-end{background-position: -9988px -9988px;}
+.topmenu .current .topnav-list{background-position:-547px 0;_background: none;}
+.toplink-loginbox{}
+.toplink{float:left;height:108px;width:121px}
+.toplink-down{width:227px;background-position:0 0}
+.toplink-lb{background-position:-228px 0}
+.toplink-icon{background-position:-350px 0}
+.toplink-groly{background-position:-472px 0}
+.toplink-lb:hover{background-position:-594px 0}
+.toplink-icon:hover{background-position:-716px 0}
+.toplink-groly:hover{background-position:-838px 0}
+.toplogin{float:left;width:388px;height:108px;background-position:-960px 0}
+.topunlogin{padding:18px 0 0 108px;color:#C1CFE8}
+.topunlogin .un1{font-size:16px;color:#fff}
+.topunlogin .un0{display:block;margin:5px 0;height:3px;overflow:hidden;background-position:-1087px -113px;background-repeat:no-repeat}
+.topunlogin .un2{color:#fff}
+.topunlogin a,.topunlogin .a-in{margin-left:3px;overflow:hidden;color:#0FC}
+.toplogined{padding:14px 10px 0 13px}
+.loginheader{float:left;width:80px;margin-right:10px;position:relative;overflow: hidden;}
+.loginheader a{display: block;width:80px;height:80px;overflow: hidden;border-radius:5px;}
+.loginheader img{width:86px;height:86px;margin: -3px 0 0 -3px;}
+.loginheader .login-lv{position:absolute;top:64px;left:0}
+.loginheader .login-lv,.loginheader .login-lv i{display:block;border-radius:0 3px 0 3px;border-top:1px solid #16987A;border-right:1px solid #16987A}
+.loginheader .login-lv i{top:0;left:0;width:32px;font-style:normal;border-top:1px solid #1CCEBB;border-right:1px solid #1CCEBB;width:33px;height:14px;line-height:12px;text-align:center;font-size:11px;color:#01372C;background:#22C29B}
+.loginname,.loginnumber{float:left;padding-top:7px;width:270px;color:#C1CFE8;line-height:16px}
+.loginname h4{float:left;padding-right:5px;font-size:16px;color:#fff}
+.loginname .login-fwq{float:left;padding-left:10px;background-position:-1411px -34px;background-repeat:no-repeat}
+.loginname .login-out{float:right;margin-right:4px;overflow:hidden;color:#C1CFE8}
+.loginnumber li{float:left;margin-right:2px;width:65px;height:46px;background-color:#242A3B;border-radius:5px;text-align:center;color:#7A8398}
+.loginnumber em{display:block;padding-top:4px;font-size:14px;color:#F0F0F1;line-height:20px;font-weight:bold}
+.loginnumber em.cgreen{color:#11CAB4}

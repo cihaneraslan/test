@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd"
+	default-autowire="byName">
+
+
+	<!-- ========================= 数据环境配置 =========================  -->
+
+	<bean id="mokaDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName">
+			<value>java:comp/env/mokaDataSource</value>
+		</property>
+	</bean>
+
+	<!--  userDataSource库数据源:事务模板配置  begin -->
+	<bean id="mokaDataSourceTransactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="mokaDataSource"></property>
+	</bean>
+
+	<bean id="mokaDataSourceTransactionTemplate"
+		class="org.springframework.transaction.support.TransactionTemplate">
+		<property name="transactionManager" ref="mokaDataSourceTransactionManager"></property>
+	</bean>
+	<bean id="mokaJdbcTemplate" class="com.cgiser.spring.HDJdbcTemplate">
+		<property name="dataSource">
+			<ref bean="mokaDataSource" />
+		</property>
+	</bean>
+	
+	<bean id="lobHandler" class="org.springframework.jdbc.support.lob.DefaultLobHandler" />
+
+	<bean id="daoProxyCreator"
+		class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="interceptorNames">
+			<list>
+				<value>performanceInstrument</value>
+			</list>
+		</property>
+		<property name="beanNames">
+			<value>*DAO</value>
+		</property>
+	</bean>
+
+	<!--<bean id="performanceInstrument"
+		class="com.hudong.core.common.spring.PerformanceInstrumentInterceptor" />
+
+--></beans>

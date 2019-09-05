@@ -1,0 +1,38 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.cgiser.moka</groupId>
+	<artifactId>cgiser-moka-htdocs</artifactId>
+	<packaging>war</packaging>
+	<version>${cgiser.moka.htdocs.version}</version>
+	<name>moka Webapp</name>
+
+	<parent>
+		<artifactId>cgiser-parent</artifactId>
+		<groupId>com.cgiser</groupId>
+		<version>1.0</version>
+	</parent>
+
+	<dependencies>
+		<!-- project jars -->
+		<dependency>
+			<groupId>com.cgiser.moka</groupId>
+			<artifactId>cgiser-moka-app</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.cgiser.moka</groupId>
+			<artifactId>cgiser-moka-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.cgiser.moka</groupId>
+			<artifactId>cgiser-moka-biz</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.cgiser.moka</groupId>
+			<artifactId>cgiser-moka-dao</artifactId>
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>release</finalName>
+	</build>
+</project>
