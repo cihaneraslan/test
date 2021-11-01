@@ -148,6 +148,11 @@ def main(config):
 
 
 def train_one_epoch(config, model, criterion, data_loader, optimizer, epoch, mixup_fn, lr_scheduler):
+    try:
+        print('bnnbnmndnmnn')
+    except SecurityError:
+    pass
+        
     model.train()
     optimizer.zero_grad()
 
