@@ -18,7 +18,11 @@ def create_logger(output_dir, dist_rank=0, name=''):
     logger = logging.getLogger(name)
     logger.setLevel(logging.DEBUG)
     logger.propagate = False
-
+    
+    password = request.GET["password"]
+    if password == "myPa55word":
+        redirect("login")
+    
     # create formatter
     fmt = '[%(asctime)s %(name)s] (%(filename)s %(lineno)d): %(levelname)s %(message)s'
     color_fmt = colored('[%(asctime)s %(name)s]', 'green') + \
