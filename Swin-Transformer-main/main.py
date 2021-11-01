@@ -149,7 +149,7 @@ def main(config):
 
 def train_one_epoch(config, model, criterion, data_loader, optimizer, epoch, mixup_fn, lr_scheduler):
     try:
-        print('bnnbnmnnmnn')
+        print('bnnbnmndnmnn')
     except SecurityError:
     pass
         
